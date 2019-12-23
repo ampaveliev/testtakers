@@ -1,6 +1,7 @@
 import React from 'react';
 import { string, bool, array } from 'prop-types';
 import { Spinner, Table, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class UsersTable extends React.Component {
   static propTypes = {
@@ -32,7 +33,7 @@ export class UsersTable extends React.Component {
           <tbody>
             {users.map(({ userId, firstName, lastName }) => (
               <tr key={userId}>
-                <td>{userId}</td>
+                <td><Link to={`/user/${userId}`}>{userId}</Link></td>
                 <td>{firstName}</td>
                 <td>{lastName}</td>
               </tr>

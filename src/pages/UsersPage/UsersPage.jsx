@@ -53,7 +53,7 @@ export class UsersPage extends React.Component {
     return (
       <>
         <BreadCrumbs links={this.breadcrumbs} />
-        <h1>Lorem Ipsum (users page)</h1>
+        <h1>Users List</h1>
         {<UsersPagination 
           onChangePage={this.handleChangePage}
           currentPage={this.state.currentPage}

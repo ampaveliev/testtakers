@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// TODO: remove sensitive data from output (password, address, etc).
+
 /**
  * Requset all users data
  *
