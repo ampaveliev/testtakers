@@ -11,39 +11,35 @@ export class UsersTable extends React.Component {
 
   static defaultProps = {
     users: [],
-    isLoading: false
+    isLoading: false,
   }
 
   render() {
     const { isLoading, users, error } = this.props;
 
-    if (error) {
-      return <Alert variant="danger">{error}</Alert>;
-    }
-
-    if (isLoading) {
-      return <Spinner animation="border" variant="primary" />;
-    }
-
     return (
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(({ userId, firstName, lastName }) => (
-            <tr key={userId}>
-              <td>{userId}</td>
-              <td>{firstName}</td>
-              <td>{lastName}</td>
+      <section>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {isLoading && <Spinner animation="border" variant="primary" />}
+        {!isLoading && <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {users.map(({ userId, firstName, lastName }) => (
+              <tr key={userId}>
+                <td>{userId}</td>
+                <td>{firstName}</td>
+                <td>{lastName}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>}
+      </section>
     );
   }
 }
