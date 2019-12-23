@@ -1,4 +1,4 @@
-import { ALL_USERS_REQUEST_LOADING, ALL_USERS_REQUEST_SUCCESS } from '../types';
+import { ALL_USERS_REQUEST_LOADING, ALL_USERS_REQUEST_SUCCESS, ALL_USERS_REQUEST_FAIL } from '../types';
 
 /**
  * Action creator for start loading users.
@@ -11,7 +11,7 @@ import { ALL_USERS_REQUEST_LOADING, ALL_USERS_REQUEST_SUCCESS } from '../types';
  *   - type {String} - ALL_USERS_REQUEST_LOADING,
  *   - payload {Object} - passed config.
  */
-export const loadUsersRequest = (config = { limit: 20, offset: 0 }) => ({
+export const loadUsersRequest = (config = { limit: 10, offset: 0 }) => ({
   type: ALL_USERS_REQUEST_LOADING,
   payload: config,
 });
@@ -28,5 +28,19 @@ export const loadUsersRequest = (config = { limit: 20, offset: 0 }) => ({
 export const loadUsersSuccess = (users) => ({
   type: ALL_USERS_REQUEST_SUCCESS,
   payload: users,
-})
+});
+
+/**
+ * Action creator for handle success loading users.
+ * 
+ * @param {String} message - the error message.
+ *
+ * @returns {Object} - standard redux action
+ *   - type {String} - ALL_USERS_REQUEST_FAIL,
+ *   - payload {String} - passed message.
+ */
+export const loadUsersFail = (message) => ({
+  type: ALL_USERS_REQUEST_FAIL,
+  payload: message,
+});
 

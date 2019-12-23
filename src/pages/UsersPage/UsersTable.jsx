@@ -18,13 +18,11 @@ export class UsersTable extends React.Component {
     const { isLoading, users, error } = this.props;
 
     if (error) {
-      return (
-        <Alert variant="danger">{error}</Alert>
-      );
+      return <Alert variant="danger">{error}</Alert>;
     }
 
     if (isLoading) {
-      return <Spinner animation="border" variant="primary" />
+      return <Spinner animation="border" variant="primary" />;
     }
 
     return (

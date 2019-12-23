@@ -1,7 +1,7 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
 
 import { ALL_USERS_REQUEST_LOADING, USER_REQUEST_LOADING } from '../types';
-import { loadUsersSuccess } from '..';
+import { loadUsersSuccess, loadUsersFail } from '..';
 import * as services from '../services';
 
 export function* loadUsers({ payload }) {
@@ -10,13 +10,16 @@ export function* loadUsers({ payload }) {
     const action = loadUsersSuccess(data);
     yield put(action);
   } catch (error) {
-
+    const message = error.response.data && error.response.data.message;
+    const action = loadUsersFail(message || error.message)
+    yield put(action);
   }
 }
 
 export function* loadUser({ payload }) {
   const { data } = yield call(services.loadUser, payload);
-  console.log(data);
+  console.log(data)
+  // todo
 }
 
 export function* watchLoadUsers () {
